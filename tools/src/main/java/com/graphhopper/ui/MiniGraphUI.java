@@ -160,7 +160,7 @@ public class MiniGraphUI {
                 Rectangle d = getBounds();
                 BBox b = mg.setBounds(0, d.width, 0, d.height);
                 if (fastPaint) {
-                    rand.setSeed(0);
+                    rand.setSeed(System.currentTimeMillis());
                     bitset.clear();
                 }
 
