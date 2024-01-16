@@ -136,7 +136,7 @@ public class OSMInputFile implements Sink, OSMInput {
         parser = factory.createXMLStreamReader(in, "UTF-8");
 
         int event = parser.next();
-        if (event != XMLStreamConstants.START_ELEMENT || !parser.getLocalName().equalsIgnoreCase("osm")) {
+        if (event != XMLStreamConstants.START_ELEMENT || !"osm".equalsIgnoreCase(parser.getLocalName())) {
             throw new IllegalArgumentException("File is not a valid OSM stream");
         }
         // See https://wiki.openstreetmap.org/wiki/PBF_Format#Definition_of_the_OSMHeader_fileblock

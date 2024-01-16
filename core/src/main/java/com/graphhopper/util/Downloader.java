@@ -79,9 +79,9 @@ public class Downloader {
         // wrap
         try {
             String encoding = connection.getContentEncoding();
-            if (encoding != null && encoding.equalsIgnoreCase("gzip"))
+            if (encoding != null && "gzip".equalsIgnoreCase(encoding))
                 is = new GZIPInputStream(is);
-            else if (encoding != null && encoding.equalsIgnoreCase("deflate"))
+            else if (encoding != null && "deflate".equalsIgnoreCase(encoding))
                 is = new InflaterInputStream(is, new Inflater(true));
         } catch (IOException ex) {
         }

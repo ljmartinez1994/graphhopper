@@ -116,7 +116,7 @@ public class PtIsochroneResource {
             z1.merge(nodeCoordinate, this.z.apply(nodeLabel), Math::min);
         };
 
-        if (format.equals("multipoint")) {
+        if ("multipoint".equals(format)) {
             router.calcLabels(queryResult.getClosestNode(), initialTime, blockedRouteTypes, sptVisitor, label -> label.currentTime <= targetZ);
             MultiPoint exploredPoints = geometryFactory.createMultiPointFromCoords(z1.keySet().toArray(new Coordinate[0]));
             return wrap(exploredPoints);
@@ -166,7 +166,7 @@ public class PtIsochroneResource {
             MultiPolygon isoline = contourBuilder.computeIsoline(targetZ, triangulation.getEdges());
 
             // debugging tool
-            if (format.equals("triangulation")) {
+            if ("triangulation".equals(format)) {
                 Response response = new Response();
                 for (Vertex vertex : (Collection<Vertex>) tin.getVertices(true)) {
                     JsonFeature feature = new JsonFeature();

@@ -98,7 +98,7 @@ public class NavigateResource {
             Currently, the NavigateResponseConverter is pretty limited.
             Therefore, we enforce these values to make sure the client does not receive an unexpected answer.
          */
-        if (!geometries.equals("polyline6"))
+        if (!"polyline6".equals(geometries))
             throw new IllegalArgumentException("Currently, we only support polyline6");
         if (!enableInstructions)
             throw new IllegalArgumentException("Currently, you need to enable steps");
@@ -110,11 +110,11 @@ public class NavigateResource {
             throw new IllegalArgumentException("You need to enable banner instructions right now");
 
         double minPathPrecision = 1;
-        if (overview.equals("full"))
+        if ("full".equals(overview))
             minPathPrecision = 0;
 
         DistanceUtils.Unit unit;
-        if (voiceUnits.equals("metric")) {
+        if ("metric".equals(voiceUnits)) {
             unit = DistanceUtils.Unit.METRIC;
         } else {
             unit = DistanceUtils.Unit.IMPERIAL;

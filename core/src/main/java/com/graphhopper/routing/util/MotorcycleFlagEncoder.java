@@ -142,7 +142,7 @@ public class MotorcycleFlagEncoder extends CarFlagEncoder {
 
         if ("track".equals(highwayValue)) {
             String tt = way.getTag("tracktype");
-            if (tt != null && !tt.equals("grade1"))
+            if (tt != null && !"grade1".equals(tt))
                 return EncodingManager.Access.CAN_SKIP;
         }
 

@@ -134,9 +134,9 @@ public class OSMValueExtractor {
 
     public static boolean isInvalidValue(String value) {
         value = toLowerCase(value);
-        return value.isEmpty() || value.startsWith("default") || value.equals("none") || value.equals("unknown")
+        return value.isEmpty() || value.startsWith("default") || "none".equals(value) || "unknown".equals(value)
                 || value.contains("unrestricted") || value.startsWith("〜")
-                || value.contains("narrow") || value.equals("unsigned") || value.equals("fixme") || value.equals("small")
+                || value.contains("narrow") || "unsigned".equals(value) || "fixme".equals(value) || "small".equals(value)
                 || value.contains(";") || value.contains(":") || value.contains("(")
                 || value.contains(">") || value.contains("<") || value.contains("-")
                 // only support '.' and no German decimals
@@ -160,7 +160,7 @@ public class OSMValueExtractor {
         if (str.endsWith(":urban"))
             return 50;
     
-        if (str.equals("walk") || str.endsWith(":living_street"))
+        if ("walk".equals(str) || str.endsWith(":living_street"))
             return 6;
     
         int mpInteger = str.indexOf("mp");

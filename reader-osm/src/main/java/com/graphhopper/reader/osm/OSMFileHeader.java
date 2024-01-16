@@ -45,7 +45,7 @@ public class OSMFileHeader extends ReaderElement {
 
     protected void readFileHeader(XMLStreamReader parser) throws XMLStreamException {
         int event = parser.getEventType();
-        while (event != XMLStreamConstants.END_DOCUMENT && parser.getLocalName().equals("osm")) {
+        while (event != XMLStreamConstants.END_DOCUMENT && "osm".equals(parser.getLocalName())) {
             event = parser.nextTag();
         }
     }

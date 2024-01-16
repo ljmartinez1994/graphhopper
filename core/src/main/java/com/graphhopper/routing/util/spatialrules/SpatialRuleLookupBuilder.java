@@ -43,7 +43,7 @@ public class SpatialRuleLookupBuilder {
         Map<String, JsonFeature> featureMap = new HashMap<>();
         for (JsonFeatureCollection featureCollection : jsonFeatureCollections) {
             for (JsonFeature jsonFeature : featureCollection.getFeatures()) {
-                String id = jsonIdField.isEmpty() || toLowerCase(jsonIdField).equals("id") ? jsonFeature.getId() : (String) jsonFeature.getProperty(jsonIdField);
+                String id = jsonIdField.isEmpty() || "id".equals(toLowerCase(jsonIdField)) ? jsonFeature.getId() : (String) jsonFeature.getProperty(jsonIdField);
                 if (id == null || id.isEmpty())
                     throw new IllegalArgumentException("ID cannot be empty but was for JsonFeature " + featureCollection.getFeatures().indexOf(jsonFeature));
 

@@ -49,7 +49,7 @@ public class LMProfile {
     }
 
     public boolean usesOtherPreparation() {
-        return !preparationProfile.equals("this");
+        return !"this".equals(preparationProfile);
     }
 
     public String getPreparationProfile() {

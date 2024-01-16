@@ -54,7 +54,7 @@ public class OSMXMLHelper {
 
     private static void readNodes(ReaderWay way, XMLStreamReader parser) throws XMLStreamException {
         int event = parser.getEventType();
-        while (event != XMLStreamConstants.END_DOCUMENT && parser.getLocalName().equals("nd")) {
+        while (event != XMLStreamConstants.END_DOCUMENT && "nd".equals(parser.getLocalName())) {
             if (event == XMLStreamConstants.START_ELEMENT) {
                 // read node reference
                 String ref = parser.getAttributeValue(null, "ref");
@@ -67,7 +67,7 @@ public class OSMXMLHelper {
 
     private static void readTags(ReaderElement re, XMLStreamReader parser) throws XMLStreamException {
         int event = parser.getEventType();
-        while (event != XMLStreamConstants.END_DOCUMENT && parser.getLocalName().equals("tag")) {
+        while (event != XMLStreamConstants.END_DOCUMENT && "tag".equals(parser.getLocalName())) {
             if (event == XMLStreamConstants.START_ELEMENT) {
                 // read tag
                 String key = parser.getAttributeValue(null, "k");
@@ -92,7 +92,7 @@ public class OSMXMLHelper {
 
     private static void readMembers(ReaderRelation rel, XMLStreamReader parser) throws XMLStreamException {
         int event = parser.getEventType();
-        while (event != XMLStreamConstants.END_DOCUMENT && parser.getLocalName().equalsIgnoreCase("member")) {
+        while (event != XMLStreamConstants.END_DOCUMENT && "member".equalsIgnoreCase(parser.getLocalName())) {
             if (event == XMLStreamConstants.START_ELEMENT) {
                 // read member
                 rel.add(createMember(parser));

@@ -52,13 +52,13 @@ public class OSMSurfaceParser implements TagParser {
         if (surface == MISSING)
             return edgeFlags;
 
-        if (surfaceTag.equals("metal"))
+        if ("metal".equals(surfaceTag))
             surface = PAVED;
-        else if (surfaceTag.equals("sett"))
+        else if ("sett".equals(surfaceTag))
             surface = COBBLESTONE;
-        else if (surfaceTag.equals("wood"))
+        else if ("wood".equals(surfaceTag))
             surface = UNPAVED;
-        else if (surfaceTag.equals("earth"))
+        else if ("earth".equals(surfaceTag))
             surface = DIRT;
 
         surfaceEnc.setEnum(false, edgeFlags, surface);

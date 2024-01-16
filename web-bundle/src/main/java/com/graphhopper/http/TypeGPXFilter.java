@@ -32,7 +32,7 @@ public class TypeGPXFilter implements ContainerRequestFilter {
     @Override
     public void filter(ContainerRequestContext rc) {
         String maybeType = rc.getUriInfo().getQueryParameters().getFirst("type");
-        if (maybeType != null && maybeType.equals("gpx")) {
+        if (maybeType != null && "gpx".equals(maybeType)) {
             rc.getHeaders().putSingle(HttpHeaders.ACCEPT, "application/gpx+xml");
         }
     }

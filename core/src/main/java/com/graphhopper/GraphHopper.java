@@ -498,7 +498,7 @@ public class GraphHopper implements GraphHopperAPI {
             setEncodingManager(encodingManager);
         }
 
-        if (ghConfig.getString("graph.locktype", "native").equals("simple"))
+        if ("simple".equals(ghConfig.getString("graph.locktype", "native")))
             lockFactory = new SimpleFSLockFactory();
         else
             lockFactory = new NativeFSLockFactory();
@@ -589,17 +589,17 @@ public class GraphHopper implements GraphHopperAPI {
 
         DAType elevationDAType = DAType.fromString(ghConfig.getString("graph.elevation.dataaccess", "MMAP"));
         ElevationProvider elevationProvider = ElevationProvider.NOOP;
-        if (eleProviderStr.equalsIgnoreCase("srtm")) {
+        if ("srtm".equalsIgnoreCase(eleProviderStr)) {
             elevationProvider = new SRTMProvider(cacheDirStr);
-        } else if (eleProviderStr.equalsIgnoreCase("cgiar")) {
+        } else if ("cgiar".equalsIgnoreCase(eleProviderStr)) {
             elevationProvider = new CGIARProvider(cacheDirStr);
-        } else if (eleProviderStr.equalsIgnoreCase("gmted")) {
+        } else if ("gmted".equalsIgnoreCase(eleProviderStr)) {
             elevationProvider = new GMTEDProvider(cacheDirStr);
-        } else if (eleProviderStr.equalsIgnoreCase("srtmgl1")) {
+        } else if ("srtmgl1".equalsIgnoreCase(eleProviderStr)) {
             elevationProvider = new SRTMGL1Provider(cacheDirStr);
-        } else if (eleProviderStr.equalsIgnoreCase("multi")) {
+        } else if ("multi".equalsIgnoreCase(eleProviderStr)) {
             elevationProvider = new MultiSourceElevationProvider(cacheDirStr);
-        } else if (eleProviderStr.equalsIgnoreCase("skadi")) {
+        } else if ("skadi".equalsIgnoreCase(eleProviderStr)) {
             elevationProvider = new SkadiProvider(cacheDirStr);
         }
 

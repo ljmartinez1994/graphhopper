@@ -102,7 +102,7 @@ public final class MMapDataAccess extends AbstractDataAccess {
                         }
                     }
 
-                    if (buffer.getClass().getSimpleName().equals("MappedByteBufferAdapter")) {
+                    if ("MappedByteBufferAdapter".equals(buffer.getClass().getSimpleName())) {
                         if (!Constants.ANDROID)
                             throw new RuntimeException("MappedByteBufferAdapter only supported for Android at the moment");
 

@@ -123,7 +123,7 @@ public class SRTMGL1Provider extends AbstractSRTMElevationProvider {
         int latInt = getMinLatForTile(lat);
         String north = getNorthString(latInt);
         String dir;
-        if (north.equals("N")) {
+        if ("N".equals(north)) {
             dir = "North/";
             if (lat >= 30)
                 dir += "North_30_60/";

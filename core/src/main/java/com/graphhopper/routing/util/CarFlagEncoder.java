@@ -177,7 +177,7 @@ public class CarFlagEncoder extends AbstractFlagEncoder {
         if (speed == null)
             throw new IllegalStateException(toString() + ", no speed found for: " + highwayValue + ", tags: " + way);
 
-        if (highwayValue.equals("track")) {
+        if ("track".equals(highwayValue)) {
             String tt = way.getTag("tracktype");
             if (!Helper.isEmpty(tt)) {
                 Integer tInt = trackTypeSpeedMap.get(tt);

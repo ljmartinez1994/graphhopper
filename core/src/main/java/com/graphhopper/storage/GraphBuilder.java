@@ -153,23 +153,23 @@ public class GraphBuilder {
             }
             TurnCostProvider turnCostProvider;
             boolean edgeBased = false;
-            if (edgeOrNode.equals("edge")) {
+            if ("edge".equals(edgeOrNode)) {
                 if (turnCostStorage == null) {
                     throw new IllegalArgumentException("For edge-based CH profiles you need a turn cost storage");
                 }
                 turnCostProvider = new DefaultTurnCostProvider(encoder, turnCostStorage, uTurnCostsInt);
                 edgeBased = true;
-            } else if (edgeOrNode.equals("node")) {
+            } else if ("node".equals(edgeOrNode)) {
                 turnCostProvider = NO_TURN_COST_PROVIDER;
             } else {
                 throw new IllegalArgumentException("Invalid CH profile string: " + profileString);
             }
             Weighting weighting;
-            if (weightingStr.equalsIgnoreCase("fastest")) {
+            if ("fastest".equalsIgnoreCase(weightingStr)) {
                 weighting = new FastestWeighting(encoder, turnCostProvider);
-            } else if (weightingStr.equalsIgnoreCase("shortest")) {
+            } else if ("shortest".equalsIgnoreCase(weightingStr)) {
                 weighting = new ShortestWeighting(encoder, turnCostProvider);
-            } else if (weightingStr.equalsIgnoreCase("short_fastest")) {
+            } else if ("short_fastest".equalsIgnoreCase(weightingStr)) {
                 weighting = new ShortFastestWeighting(encoder, 0.1, turnCostProvider);
             } else {
                 throw new IllegalArgumentException("Weighting not supported using this method, maybe you can use setCHProfile instead: " + weightingStr);
