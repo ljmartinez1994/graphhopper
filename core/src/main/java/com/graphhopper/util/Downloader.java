@@ -17,6 +17,8 @@
  */
 package com.graphhopper.util;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -94,7 +96,7 @@ public class Downloader {
     }
 
     public HttpURLConnection createConnection(String urlStr) throws IOException {
-        URL url = new URL(urlStr);
+        URL url = Urls.create(urlStr, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         // Will yield in a POST request: conn.setDoOutput(true);
         conn.setDoInput(true);
