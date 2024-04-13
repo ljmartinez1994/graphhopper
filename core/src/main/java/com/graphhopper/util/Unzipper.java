@@ -17,6 +17,7 @@
  */
 package com.graphhopper.util;
 
+import io.github.pixee.security.ZipSecurity;
 import java.io.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -50,7 +51,7 @@ public class Unzipper {
             toFolder.mkdirs();
 
         long sumBytes = 0;
-        ZipInputStream zis = new ZipInputStream(fromIs);
+        ZipInputStream zis = ZipSecurity.createHardenedInputStream(fromIs);
         try {
             ZipEntry ze = zis.getNextEntry();
             byte[] buffer = new byte[8 * 1024];
