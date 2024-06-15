@@ -1,5 +1,7 @@
 package com.graphhopper.tools;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -74,7 +76,7 @@ public class TagInfoUtil {
 
     private static List<Tag> loadTags(String key) throws IOException {
         JsonNode node;
-        try (InputStream in = new URL(URL_TEMPLATE + key).openStream(); BufferedInputStream bufferedIn = new BufferedInputStream(in)) {
+        try (InputStream in = Urls.create(URL_TEMPLATE + key, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS).openStream(); BufferedInputStream bufferedIn = new BufferedInputStream(in)) {
             node = new ObjectMapper().readTree(bufferedIn);
         }
         
