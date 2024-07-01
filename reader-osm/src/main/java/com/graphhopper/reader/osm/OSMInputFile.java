@@ -20,6 +20,7 @@ package com.graphhopper.reader.osm;
 import com.graphhopper.reader.ReaderElement;
 import com.graphhopper.reader.osm.pbf.PbfReader;
 import com.graphhopper.reader.osm.pbf.Sink;
+import static io.github.pixee.security.XMLInputFactorySecurity.hardenFactory;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
@@ -132,7 +133,7 @@ public class OSMInputFile implements Sink, OSMInput {
 
     private void openXMLStream(InputStream in)
             throws XMLStreamException {
-        XMLInputFactory factory = XMLInputFactory.newInstance();
+        XMLInputFactory factory = hardenFactory(XMLInputFactory.newInstance());
         parser = factory.createXMLStreamReader(in, "UTF-8");
 
         int event = parser.next();
