@@ -33,6 +33,7 @@
         <org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.alignMultilineMethodParams>true</org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.alignMultilineMethodParams>
         <org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.alignMultilineFor>true</org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.alignMultilineFor>
         <org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.alignMultilineTryResources>true</org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.alignMultilineTryResources>
+        <versions.java-security-toolkit>1.2.0</versions.java-security-toolkit>
     </properties>
 
     <scm>
@@ -134,6 +135,13 @@
                 <version>5.6.0</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.github.pixee</groupId>
+                <artifactId>java-security-toolkit</artifactId>
+                
+                
+                <version>${versions.java-security-toolkit}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
