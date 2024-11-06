@@ -19,6 +19,7 @@ package com.graphhopper.reader;
 
 import com.graphhopper.storage.Graph;
 import com.graphhopper.util.Helper;
+import io.github.pixee.security.BoundedLineReader;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -48,12 +49,12 @@ public class PrincetonReader {
         int lineNo = 0;
         try {
             lineNo++;
-            int nodes = Integer.parseInt(reader.readLine());
+            int nodes = Integer.parseInt(BoundedLineReader.readLine(reader, 5_000_000));
             lineNo++;
-            int edges = Integer.parseInt(reader.readLine());
+            int edges = Integer.parseInt(BoundedLineReader.readLine(reader, 5_000_000));
             for (int i = 0; i < edges; i++) {
                 lineNo++;
-                String line = reader.readLine();
+                String line = BoundedLineReader.readLine(reader, 5_000_000);
                 if (line == null)
                     throw new IllegalStateException("Cannot read line " + lineNo);
 
