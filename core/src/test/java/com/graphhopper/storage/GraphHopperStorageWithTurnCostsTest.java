@@ -22,6 +22,7 @@ import com.graphhopper.routing.ev.TurnCost;
 import com.graphhopper.routing.util.CarFlagEncoder;
 import com.graphhopper.util.EdgeIteratorState;
 import com.graphhopper.util.Helper;
+import java.security.SecureRandom;
 import org.junit.Test;
 
 import java.util.Random;
@@ -104,7 +105,7 @@ public class GraphHopperStorageWithTurnCostsTest extends GraphHopperStorageTest 
         // assert that turnCostStorage can hold 104 turn cost entries at the beginning
         assertEquals(128, turnCostStorage.getCapacity());
 
-        Random r = new Random();
+        Random r = new SecureRandom();
 
         NodeAccess na = graph.getNodeAccess();
         for (int i = 0; i < 100; i++) {

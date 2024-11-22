@@ -19,6 +19,7 @@
 package com.graphhopper.util;
 
 import com.carrotsearch.hppc.IntArrayList;
+import java.security.SecureRandom;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -47,7 +48,7 @@ class ArrayUtilTest {
 
     @Test
     public void testPermutation() {
-        IntArrayList list = ArrayUtil.permutation(15, new Random());
+        IntArrayList list = ArrayUtil.permutation(15, new SecureRandom());
         assertEquals(15, list.buffer.length);
         assertEquals(15, list.elementsCount);
         assertEquals(14 / 2.0 * (14 + 1), Arrays.stream(list.buffer).sum());
