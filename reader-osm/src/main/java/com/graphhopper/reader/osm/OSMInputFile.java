@@ -20,6 +20,7 @@ package com.graphhopper.reader.osm;
 import com.graphhopper.reader.ReaderElement;
 import com.graphhopper.reader.osm.pbf.PbfReader;
 import com.graphhopper.reader.osm.pbf.Sink;
+import io.github.pixee.security.ZipSecurity;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
@@ -108,7 +109,7 @@ public class OSMInputFile implements Sink, OSMInput {
             return ips;
         } else if (header[0] == 'P' && header[1] == 'K') {
             ips.reset();
-            ZipInputStream zip = new ZipInputStream(ips);
+            ZipInputStream zip = ZipSecurity.createHardenedInputStream(ips);
             zip.getNextEntry();
 
             return zip;
