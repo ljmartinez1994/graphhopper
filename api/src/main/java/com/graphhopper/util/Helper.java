@@ -17,6 +17,7 @@
  */
 package com.graphhopper.util;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.MappedByteBuffer;
@@ -102,7 +103,7 @@ public class Helper {
         try {
             List<String> res = new ArrayList<>();
             String line;
-            while ((line = reader.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
                 res.add(line);
             }
             return res;
