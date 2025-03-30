@@ -30,6 +30,8 @@ import com.conveyal.gtfs.GTFSFeed;
 import com.conveyal.gtfs.error.*;
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -199,7 +201,7 @@ public abstract class Entity implements Serializable {
             String str = getFieldCheckRequired(column, required);
             URL url = null;
             if (str != null) try {
-                url = new URL(str);
+                url = Urls.create(str, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
             } catch (MalformedURLException mue) {
                 feed.errors.add(new URLParseError(tableName, row, column));
             }
