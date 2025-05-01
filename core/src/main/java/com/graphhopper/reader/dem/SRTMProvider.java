@@ -19,6 +19,7 @@ package com.graphhopper.reader.dem;
 
 import com.graphhopper.coll.GHIntObjectHashMap;
 import com.graphhopper.util.Helper;
+import io.github.pixee.security.ZipSecurity;
 
 import java.io.*;
 import java.util.zip.ZipInputStream;
@@ -119,7 +120,7 @@ public class SRTMProvider extends AbstractSRTMElevationProvider {
     @Override
     byte[] readFile(File file) throws IOException {
         InputStream is = new FileInputStream(file);
-        ZipInputStream zis = new ZipInputStream(is);
+        ZipInputStream zis = ZipSecurity.createHardenedInputStream(is);
         zis.getNextEntry();
         BufferedInputStream buff = new BufferedInputStream(zis);
         ByteArrayOutputStream os = new ByteArrayOutputStream();
