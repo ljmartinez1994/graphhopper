@@ -2,6 +2,7 @@ package com.graphhopper.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.graphhopper.util.shapes.GHPoint;
+import io.github.pixee.security.BoundedLineReader;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -182,7 +183,7 @@ public abstract class AbstractGHMatrixWebTester {
         try (BufferedReader reader = new BufferedReader(simpleReader)) {
             String res = "";
             String line;
-            while ((line = reader.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
                 res += line;
             }
             return res;

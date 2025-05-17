@@ -19,6 +19,7 @@ package com.graphhopper.storage;
 
 import com.graphhopper.util.Constants;
 import com.graphhopper.util.Helper;
+import io.github.pixee.security.BoundedLineReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -197,7 +198,7 @@ public class StorableProperties implements Storable<StorableProperties> {
         BufferedReader reader = new BufferedReader(tmpReader);
         String line;
         try {
-            while ((line = reader.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
                 if (line.startsWith("//") || line.startsWith("#")) {
                     continue;
                 }
