@@ -27,6 +27,7 @@ import com.graphhopper.routing.util.*;
 import com.graphhopper.routing.weighting.Weighting;
 import com.graphhopper.storage.*;
 import com.graphhopper.util.shapes.BBox;
+import java.security.SecureRandom;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -298,8 +299,8 @@ public class GHUtility {
     public static Graph shuffle(Graph g, Graph sortedGraph) {
         if (g.getTurnCostStorage() != null)
             throw new IllegalArgumentException("Shuffling the graph is currently not supported in the presence of turn costs");
-        IntArrayList nodes = ArrayUtil.permutation(g.getNodes(), new Random());
-        IntArrayList edges = ArrayUtil.permutation(g.getEdges(), new Random());
+        IntArrayList nodes = ArrayUtil.permutation(g.getNodes(), new SecureRandom());
+        IntArrayList edges = ArrayUtil.permutation(g.getEdges(), new SecureRandom());
         return createSortedGraph(g, sortedGraph, nodes, edges);
     }
 

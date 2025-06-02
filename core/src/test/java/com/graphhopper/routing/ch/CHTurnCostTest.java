@@ -35,6 +35,7 @@ import com.graphhopper.storage.index.LocationIndexTree;
 import com.graphhopper.storage.index.QueryResult;
 import com.graphhopper.util.*;
 import com.graphhopper.util.shapes.GHPoint;
+import java.security.SecureRandom;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -1185,7 +1186,7 @@ public class CHTurnCostTest {
     }
 
     private List<Integer> getRandomIntegerSequence(int nodes) {
-        return getRandomIntegerSequence(nodes, new Random());
+        return getRandomIntegerSequence(nodes, new SecureRandom());
     }
 
     private List<Integer> getRandomIntegerSequence(int nodes, Random rnd) {

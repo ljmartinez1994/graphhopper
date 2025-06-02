@@ -4,6 +4,7 @@ import com.carrotsearch.hppc.LongArrayList;
 import com.graphhopper.Repeat;
 import com.graphhopper.storage.RAMDirectory;
 import com.graphhopper.util.Helper;
+import java.security.SecureRandom;
 import org.junit.Test;
 
 import java.io.File;
@@ -227,7 +228,7 @@ public class StringIndexTest {
     @Repeat(times = 100)
     public void testRandom() {
         StringIndex index = create();
-        long seed = new Random().nextLong();
+        long seed = new SecureRandom().nextLong();
         System.out.println("StringIndexText.testRandom seed:" + seed);
         Random random = new Random(seed);
         List<String> keys = createRandomList(random, "_key", 1000);
