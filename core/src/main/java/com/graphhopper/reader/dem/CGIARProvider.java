@@ -18,6 +18,7 @@
 package com.graphhopper.reader.dem;
 
 import com.graphhopper.util.Helper;
+import io.github.pixee.security.ZipSecurity;
 import org.apache.xmlgraphics.image.codec.tiff.TIFFDecodeParam;
 import org.apache.xmlgraphics.image.codec.tiff.TIFFImageDecoder;
 import org.apache.xmlgraphics.image.codec.util.SeekableStream;
@@ -98,7 +99,7 @@ public class CGIARProvider extends AbstractTiffElevationProvider {
         SeekableStream ss = null;
         try {
             InputStream is = new FileInputStream(file);
-            ZipInputStream zis = new ZipInputStream(is);
+            ZipInputStream zis = ZipSecurity.createHardenedInputStream(is);
             // find tif file in zip
             ZipEntry entry = zis.getNextEntry();
             while (entry != null && !entry.getName().equals(tifName)) {
